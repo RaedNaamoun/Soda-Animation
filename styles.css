@@ -1,0 +1,75 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: bisque;
+}
+.banner{
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+
+.banner .product{
+    width: 500px;
+    height: 500px;
+    position: absolute;
+    bottom: 170px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+    transition: 0.7s;
+    --left: 0px;
+    display: flex;
+}
+
+.banner .product .soda{
+    background:
+        var(--url) var(--left) 0,
+        url(soda.png);
+    background-size: auto 100%;
+    width: 400px;
+    aspect-ratio: 2 / 2;
+    background-blend-mode: multiply;
+    mask-image: url(soda.png);
+    mask-size: auto 100%;
+    transition: 0.7s ;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.banner .product:hover{
+    --left: -1000px;
+    transform: translateX(-50%) translateY(-120px) scale(1.5, 1.5);
+}
+
+.banner .rock{
+    position: absolute;
+    inset: 0 0 0 0;
+    pointer-events: none;
+}
+
+.banner .rock img{
+    position: absolute;
+    transition: 0.7s;
+    height: 290px;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 130px;
+}
+
+.banner:has(.product:hover) .rock img{
+    transform: translateX(-50%) translateY(50px);
+}
+
+.banner .product .soda:nth-child(2){
+    opacity: 0;
+}
+
+.banner .product:hover .soda:nth-child(2){
+    opacity: 1;
+}
